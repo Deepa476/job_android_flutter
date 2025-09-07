@@ -15,14 +15,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings Screen'),
+        title: const Text('Settings'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             // Notifications section
-            SectionHeader(title: 'Notifications'),
+            const SectionHeader(title: 'Notifications'),
             SwitchListTile(
               title: Text('Job Alerts'),
               value: jobAlerts,
@@ -52,7 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
 
             // App Preferences section
-            SectionHeader(title: 'App Preferences'),
+            const SectionHeader(title: 'App Preferences'),
             ListTile(
               title: Text('Language'),
               subtitle: Text('English'),
@@ -74,7 +74,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
 
             // Privacy & Legal section
-            SectionHeader(title: 'Privacy & Legal'),
+            const SectionHeader(title: 'Privacy & Legal'),
             ListTile(
               title: Text('Data Sharing'),
               trailing: Icon(Icons.arrow_forward_ios),

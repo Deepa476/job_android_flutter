@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:job/widgets/job_card.dart';
+import 'package:job/widgets/empty_state.dart';
 
 class ApplicationsScreen extends StatelessWidget {
   const ApplicationsScreen({super.key});
@@ -62,59 +64,25 @@ class ApplicationsScreen extends StatelessWidget {
           children: [
             // Applied Tab
             ListView.builder(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               itemCount: applications.length,
               itemBuilder: (context, index) {
                 final app = applications[index];
-                return Card(
-                  elevation: 0,
-                  color: Colors.grey[100],
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(12),
-                    leading: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        color: app["logoColor"] as Color,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    title: Text(
-                      app["title"].toString(),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    subtitle: Text("Applied on ${app["date"]}"),
-                    trailing: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[50],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        app["status"].toString(),
-                        style: const TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
+                return JobCard(
+                  title: app["title"].toString(),
+                  company: 'Company',
+                  location: app["date"].toString(),
+                  salaryRange: app["status"].toString(),
+                  saved: false,
+                  onTap: () {},
                 );
               },
             ),
             // Other Tabs (empty states for now)
-            const Center(child: Text("No applications under review")),
-            const Center(child: Text("No interviews scheduled")),
-            const Center(child: Text("No rejections")),
-            const Center(child: Text("No hired records")),
+            const Center(child: EmptyState(icon: Icons.hourglass_empty, title: 'Under review', message: 'You will see updates here as recruiters review your applications.')),
+            const Center(child: EmptyState(icon: Icons.event_available_outlined, title: 'No interviews yet', message: 'Interview invitations will appear here.')),
+            const Center(child: EmptyState(icon: Icons.block_outlined, title: 'No rejections', message: 'Fingers crossed! Nothing to show here.')),
+            const Center(child: EmptyState(icon: Icons.celebration_outlined, title: 'No hires yet', message: 'We will celebrate here when you get hired.')),
           ],
         ),
         // Bottom navigation handled by HomeShell

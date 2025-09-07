@@ -7,9 +7,9 @@ class JobDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Job Details'),
+        title: const Text('Job Details'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -23,8 +23,8 @@ class JobDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Company logo
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/logo.png'), // Replace with your logo asset
+                const CircleAvatar(
+                  child: Icon(Icons.work),
                   radius: 25,
                 ),
                 SizedBox(width: 10),
@@ -32,15 +32,15 @@ class JobDetailsScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Senior Product Designer',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                    Text(
+                    const Text(
                       'Tech Innovators Inc.',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    Text(
+                    const Text(
                       'San Francisco, CA',
                       style: TextStyle(color: Colors.grey),
                     ),
@@ -50,17 +50,17 @@ class JobDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Job Description Section
-            Text(
+            const Text(
               'Job Description',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text(
+            const Text(
               'Tech Innovators Inc. is seeking a Senior Product Designer to lead the design of innovative digital products. The ideal candidate will have a strong portfolio showcasing user-centered design principles and a track record of delivering impactful solutions.',
             ),
             SizedBox(height: 20),
             // Requirements Section
-            Text(
+            const Text(
               'Requirements',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -70,7 +70,7 @@ class JobDetailsScreen extends StatelessWidget {
             _buildRequirementItem('Strong understanding of user research methodologies'),
             SizedBox(height: 20),
             // Benefits Section
-            Text(
+            const Text(
               'Benefits',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -86,11 +86,10 @@ class JobDetailsScreen extends StatelessWidget {
                   // Add your apply functionality here
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  textStyle: TextStyle(fontSize: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  textStyle: const TextStyle(fontSize: 16),
                 ),
-                child: Text('Apply Now'),
+                child: const Text('Apply Now'),
               ),
             ),
           ],
@@ -102,8 +101,8 @@ class JobDetailsScreen extends StatelessWidget {
   Widget _buildRequirementItem(String requirement) {
     return Row(
       children: [
-        Icon(Icons.check_circle, color: Colors.blue, size: 20),
-        SizedBox(width: 10),
+        const Icon(Icons.check_circle, size: 20),
+        const SizedBox(width: 10),
         Expanded(child: Text(requirement)),
       ],
     );
@@ -112,8 +111,8 @@ class JobDetailsScreen extends StatelessWidget {
   Widget _buildBenefitItem(String benefit) {
     return Row(
       children: [
-        Icon(Icons.check_circle, color: Colors.blue, size: 20),
-        SizedBox(width: 10),
+        const Icon(Icons.check_circle, size: 20),
+        const SizedBox(width: 10),
         Expanded(child: Text(benefit)),
       ],
     );

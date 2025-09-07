@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job/widgets/job_card.dart';
 
 class SavedJobsScreen extends StatelessWidget {
   const SavedJobsScreen({super.key});
@@ -50,52 +51,16 @@ class SavedJobsScreen extends StatelessWidget {
         foregroundColor: Colors.black,
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         itemCount: jobs.length,
         itemBuilder: (context, index) {
           final job = jobs[index];
-          return Card(
-            elevation: 1,
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListTile(
-              contentPadding: const EdgeInsets.all(12),
-              leading: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  color: job["logoColor"] as Color,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              title: Text(
-                job["title"].toString(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(job["company"].toString()),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
-                      const SizedBox(width: 4),
-                      Text(
-                        job["location"].toString(),
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              trailing: const Icon(Icons.bookmark_border),
-            ),
+          return JobCard(
+            title: job["title"].toString(),
+            company: job["company"].toString(),
+            location: job["location"].toString(),
+            saved: true,
+            onTap: () {},
           );
         },
       ),
